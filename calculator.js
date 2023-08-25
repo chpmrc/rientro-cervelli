@@ -764,8 +764,8 @@ const regioneToRegola = {
 }
 
 function calcolaNetto(ral, regione, comune, hasAgevolazione, comuneDef) {
-    const inps = calcolaInps(ral);
     const baseImponibileEffettiva = baseImponibile(ral, regione, hasAgevolazione);
+    const inps = calcolaInps(hasAgevolazione? baseImponibileEffettiva : ral);
     const irpefTotale = calcolaIrpefTotale(baseImponibileEffettiva, regione, comune, comuneDef);
     const detrazioni = calcolaDetrazioni(baseImponibileEffettiva);
     const irpefNetto = calcolaIrpefNetto(irpefTotale, detrazioni);
